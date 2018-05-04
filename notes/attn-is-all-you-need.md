@@ -22,12 +22,13 @@
     2. Label Smoothing: 训练时使用. 伤害了 *perplexity*, 但提高了 accuracy 和 BLEU.
 * 训练时, batch 应该是不固定的. 根据句子近似序列长度来组织 batch, 使得每一个 batch 包含约 25000 个 source token 和 25000 个 target token.
 
-#### Notes/Questions
+![transformer model architecture](../imgs/transformer_model_architecture.png)
 
+#### Notes/Questions
+ 
 * 我对本文的几个存疑:
     1. Positional Encoding, 暂时想象不到;
     2. batch 的设置的优点何在;
     3. multi-head attention 的头数太多时, 模型性能反而下降, 难道不应该和残差网络的基本思想一样, 至少不伤害吗;
 * Attention Mechanism 与 RNN 并不矛盾, 在之前的模型中都是一起使用的, 但是 RNN 太复杂, 太慢. 希望注意力之于序列建模就像 word2vec 之于 word embedding.
-
-(待研究过代码之后补充)
+* 论文的题目取得也太大了- -.

@@ -2,6 +2,8 @@
 
 #### 2018-05
 
+* [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
+* [Neural Machine Translation by Jointly Learning to Align and Translate](https://arxiv.org/abs/1409.0473)
 
 
 #### 历史遗留笔记 (周记)
