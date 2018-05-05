@@ -21,5 +21,4 @@
 #### Notes/Questions
 
 * 从概率的角度看, translation 可以理解为 conditional language modeling. 即找出最优的翻译, 最大化 $p(target\|source)$ 的概率.
-* 将 $s_i$ 和 $y_i$ 分离开, 视觉上和数学上似乎都不太美.
 * 给出了 Attention 的一个范式, 但计算方法上还比较粗糙, 这也为后面的各种论文提供了发挥空间.
