@@ -21,4 +21,5 @@
 #### Notes/Questions
 
 * 从概率的角度看, translation 可以理解为 conditional language modeling. 即找出最优的翻译, 最大化 $p(target\|source)$ 的概率.
+* 用 $s_i=f(s_{i-1}, y_{i-1}, c_i)$ 来计算状态, 抛弃了 decoder RNN 的状态, 总觉的挺别扭的.
 * 给出了 Attention 的一个范式, 但计算方法上还比较粗糙, 这也为后面的各种论文提供了发挥空间.

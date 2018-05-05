@@ -1,4 +1,4 @@
-# [Attention is All You Need](https://papers.nips.cc/paper/7181-attention-is-all-you-need.pdf)
+# [Title](URL)
 
 **TL;DR** Text...
 
