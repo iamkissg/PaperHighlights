@@ -16,7 +16,7 @@
 * 使用矩阵表示句子带来了一个问题, attention layer 的后接 FC (全连阶层) 将变得很臃肿. 事实上, 文中使用的模型, 90% 的参数都集中在这个 FC 上, 设 $M$ 的大小为 $r\times u$, FC 有 b 个单元, 此时参数量将是 $r\times u \times b$.
 * 文中根据矩阵的二维特点, 提出了一种 weight pruning method. 具体地, 将 $M$ 按行映射为 $M^v\belong R^{r\times p}$, 使得 $r\times p=b$, 其中 $M^v$ 的第 r 行只和 $M$ 的第 r 行全连接, 这样就剪除了 $(r-1)/r$ 个参数 (按列映射的情况类似). 不过 weight pruning 会带来性能下降.
 
-![Struce of self-attentive sentence embedding model](../imgs/self_attentive_sentence_embedding_structure.png)
+![Struce of self-attentive sentence embedding model](../img/self_attentive_sentence_embedding_structure.png)
 
 #### Notes/Questions
 

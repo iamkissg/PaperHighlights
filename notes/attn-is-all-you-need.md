@@ -6,7 +6,7 @@
 #### Key Points
 
 * 完全放弃了 RNN 和 CNN, 仅依赖 Attention Mechanism 来对序列进行建模.
-* 提出了 Scaled Dot-Product Attention: $Attention(Q, K, V)=softmax(\frac{QK^T}{\sqrt{d_k}})V$. 其中 Q 表示 query 的矩阵(Query 可以理解为 decoder 的输出), K 表示 key 的矩阵 (key 是 endoder 的元素, 可以理解为 decoder 要 pay attention to 的对象), V 表示 Value 的矩阵 (value 表征 key 对于 query 的重要性, 即权重). 这个式子与 Dot-Product Attention 的区别在于多了一个分母 $\sqrt{d_k}$. (根据文章脚注的说明: 点积会随 $d_k$ 的增大而增大, 从而使得 softmax 的梯度饱和. 假设 query 和 key 的值是均值为 0, 方差为 1 的独立变量, $q\cdot k=\Sigma_{i=1}^{d_k} q_i k_i$ 的结果的方差将是 $d_k$)
+* 提出了 Scaled Dot-Product Attention: $Attention(Q, K, V)=softmax(\frac{QK^T}{\sqrt{d_k}})V$. 其中 Q 表示 query 的矩阵, K 表示 key 的矩阵, V 表示 value 的矩阵. 这个式子与 Dot-Product Attention 的区别在于多了一个分母 $\sqrt{d_k}$. (根据文章脚注的说明: 点积会随 $d_k$ 的增大而增大, 从而使得 softmax 的梯度饱和. 假设 query 和 key 的值是均值为 0, 方差为 1 的独立变量, $q\cdot k=\Sigma_{i=1}^{d_k} q_i k_i$ 的结果的方差将是 $d_k$)
 * 提出了 *Multi-Head Attention*, 不止算一次 Attention, 而是对 Q, K, V 做了 $h$ 次线性变换, 得到 $h$ 个平行的 Q, K, V, 计算了 $h$ 次 Attention, 然后对 attentions 做一次 concatenation + 线性变换. 公式: $MultiHead(Q, K, V)=Concat(head_1, \dots, head_h)W^O$, 其中 $head_i=Attention(QW_i^Q, KW_i^K, VW_i^V)$
 * encoder 使用的单元是 *multi-head attention + fc* 的二层结构, 并使用了*残差连接 residual connectoin* 和 *layer normalization*; decoder 的单元是一个三个结构: *masked multi-head attention + multi-head attention + fc*.
 * 模型全程使用 Attention, 在 encoder 和 decoder 中使用 self-attention 来学习序列表示, 使用 encoder-decoder attention 将 encoder 与 decoder 连接起来. 注意, encoder-decoder attention 不是 self-attention, 因为 keys, values 来自 encoder, queries 来自 decoder.  self-attention 的要求是 Q=K=V.
@@ -22,7 +22,7 @@
     2. Label Smoothing: 训练时使用. 伤害了 *perplexity*, 但提高了 accuracy 和 BLEU.
 * 训练时, batch 应该是不固定的. 根据句子近似序列长度来组织 batch, 使得每一个 batch 包含约 25000 个 source token 和 25000 个 target token.
 
-![transformer model architecture](../imgs/transformer_model_architecture.png)
+![transformer model architecture](../img/transformer_model_architecture.png)
 
 #### Notes/Questions
  
