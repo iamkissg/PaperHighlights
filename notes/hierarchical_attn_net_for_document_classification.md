@@ -1,6 +1,6 @@
 # [Hierarchical Attention Networks for Document Classification](https://www.cs.cmu.edu/~./hovy/papers/16HLT-hierarchical-attention-networks.pdf)
 
-**TL;DR** 本文将 attention mechanism 引入 document classification 任务, 根据文档的分层特点 (word, sentence, document), 提出了 `hierarchical attention netword, HAN`. 文中使用了 word attention 和 sentence attention, 用对 word vectors 加权求和的方式来表示 sentence vector, 并用 sentence vectors 加权求和的方式表示 document, 最后执行分类.
+**TL;DR** 本文将 attention mechanism 引入 document classification 任务, 根据文档的分层特点 (word, sentence, document), 提出了 `hierarchical attention network, HAN`. 文中使用了 word attention 和 sentence attention, 用对 word vectors 加权求和的方式来表示 sentence vector, 并用 sentence vectors 加权求和的方式表示 document vector, 最后执行分类.
 
 
 #### Key Points
@@ -18,4 +18,4 @@
 
 * 本文的方法很直观, 就是利用文档的分层结构特点, 但效果也很显著. 实验证明了利用分层结构带来的裨益.
 * 为什么要在 RNN 之后加一层 MLP, 让人有点匪夷所思 (有时间的话, 我会对比一下加不加 MLP 的效果)
-* 文章提到 length-adjustment 能带来 3 倍速的训练速度提升. 所谓 length-adjustment 就是将长度相近的文档放进同一个 batch 中.
+* 文章提到 length-adjustment 能带来 3 倍速的训练速度提升. 所谓 length-adjustment 就是将长度相近的文档放进同一个 batch 中, 训练时维持每个 batch 保持差不多等量的 token.

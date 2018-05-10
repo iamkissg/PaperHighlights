@@ -6,12 +6,11 @@
 #### Key Points
 
 * 句子的向量表示往往只关注句子的一个特定成分, 比如相关的词或词组, 从而只学到一种特征. 据此, 本文提出用矩阵来表示句子, 充分考虑句子的不同成分 (词, 词组, 分句等), 从而保留句子的不同特征. 用一个行向量表示一种特征:
-    * 文中用 $A=softmax(W_{s2} tanh(W_{s1}H^T))$ 来 attention matrix. 其中, $H$ 是 LSTM 状态向量构成的矩阵, $W_{s1}$ 和 $W_{s2}$ 是要学习的权值参数矩阵. 如果将 $W_{s2}$ 替换成向量, 得到的就是一个 attention vector, 此时的计算和一般的 attention vector 计算无异. 只是 $W_{s2}$ 作为矩阵之后, 为保证 attention matrix 的每一行都是一个独立的 attention vector, softmax 只应用于输入矩阵的第二维.
+    * 文中用 $A=softmax(W_{s2} tanh(W_{s1}H^T))$ 来计算 attention matrix. 其中, $H$ 是 LSTM 状态向量构成的矩阵, $W_{s1}$ 和 $W_{s2}$ 是要学习的权值参数矩阵. 如果将 $W_{s2}$ 替换成向量, 得到的就是一个 attention vector, 此时的计算和一般的 attention vector 计算无异. 只是 $W_{s2}$ 作为矩阵之后, 为保证 attention matrix 的每一行都是一个独立的 attention vector, softmax 只应用于输入矩阵的第二维.
     * 通过 $M=AH$, 就得到了 sentence embedding matrix.
     * 由于 $W_{s1}$ 和 $W_{s2}$ 的大小是固定的, 不同长度的句子学到的 sentence embedding matrix 将是固定大小的 $M$.
 * embedding matrix 存在冗余的问题, 即学到的 embedding vector 之间过分相似, 实际只学到了少量几种特征. 为此, 文章引入了一项惩罚:
-    * 用 $P=\left\Vert\left(AA^T-I\right) \right\Vert_F^2$ 来度量冗余程度. 其中 $I$ 是单位矩阵, $\left\Vert\left(\cdot\right) \right\Vert_F$ 是 Frobenius 范数.
-    * $\left\Vert\left(A\right) \right\Vert_F=\sqrt{\Sigma_{i=1}^m \Sigma_{j=1}^n\|a_{ij}^2\|}$
+    * 用 $P=\left\Vert\left(AA^T-I\right) \right\Vert_F^2$ 来度量冗余程度. 其中 $I$ 是单位矩阵, $\left\Vert\left(\cdot\right) \right\Vert_F$ 是 Frobenius 范数: $\left\Vert\left(A\right) \right\Vert_F=\sqrt{\Sigma_{i=1}^m \Sigma_{j=1}^n\|a_{ij}^2\|}$
     * 因此, 减小 $P$ 将鼓励 $AA^T-I$ 向零阵看齐. 由于减了一个单位矩阵, 随着学习, $AA^T$ 的对角元素将接近于 1. 按文中的说法, 这将使得每一个 attention vector 尽可能专注于一种成分, 即一种特征, 同时不同 attention vector 又尽可能不同.
 * 使用矩阵表示句子带来了一个问题, attention layer 的后接 FC (全连阶层) 将变得很臃肿. 事实上, 文中使用的模型, 90% 的参数都集中在这个 FC 上, 设 $M$ 的大小为 $r\times u$, FC 有 b 个单元, 此时参数量将是 $r\times u \times b$.
 * 文中根据矩阵的二维特点, 提出了一种 weight pruning method. 具体地, 将 $M$ 按行映射为 $M^v\in R^{r\times p}$, 使得 $r\times p=b$, 其中 $M^v$ 的第 r 行只和 $M$ 的第 r 行全连接, 这样就剪除了 $(r-1)/r$ 个参数 (按列映射的情况类似). 不过 weight pruning 会带来性能下降.
