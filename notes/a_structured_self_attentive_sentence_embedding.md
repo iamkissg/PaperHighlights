@@ -11,10 +11,10 @@
     * 由于 $W_{s1}$ 和 $W_{s2}$ 的大小是固定的, 不同长度的句子学到的 sentence embedding matrix 将是固定大小的 $M$.
 * embedding matrix 存在冗余的问题, 即学到的 embedding vector 之间过分相似, 实际只学到了少量几种特征. 为此, 文章引入了一项惩罚:
     * 用 $P=\left\Vert\left(AA^T-I\right) \right\Vert_F^2$ 来度量冗余程度. 其中 $I$ 是单位矩阵, $\left\Vert\left(\cdot\right) \right\Vert_F$ 是 Frobenius 范数.
-    * $\left\Vert\left(A\right) \right\Vert_F=\sqrt{\Sigma_{i=1}^m\Sigma_{j=1}^n}\|a_{ij}^2\|^$
+    * $\left\Vert\left(A\right) \right\Vert_F=\sqrt{\Sigma_{i=1}^m \Sigma_{j=1}^n\|a_{ij}^2\|}$
     * 因此, 减小 $P$ 将鼓励 $AA^T-I$ 向零阵看齐. 由于减了一个单位矩阵, 随着学习, $AA^T$ 的对角元素将接近于 1. 按文中的说法, 这将使得每一个 attention vector 尽可能专注于一种成分, 即一种特征, 同时不同 attention vector 又尽可能不同.
 * 使用矩阵表示句子带来了一个问题, attention layer 的后接 FC (全连阶层) 将变得很臃肿. 事实上, 文中使用的模型, 90% 的参数都集中在这个 FC 上, 设 $M$ 的大小为 $r\times u$, FC 有 b 个单元, 此时参数量将是 $r\times u \times b$.
-* 文中根据矩阵的二维特点, 提出了一种 weight pruning method. 具体地, 将 $M$ 按行映射为 $M^v\belong R^{r\times p}$, 使得 $r\times p=b$, 其中 $M^v$ 的第 r 行只和 $M$ 的第 r 行全连接, 这样就剪除了 $(r-1)/r$ 个参数 (按列映射的情况类似). 不过 weight pruning 会带来性能下降.
+* 文中根据矩阵的二维特点, 提出了一种 weight pruning method. 具体地, 将 $M$ 按行映射为 $M^v\in R^{r\times p}$, 使得 $r\times p=b$, 其中 $M^v$ 的第 r 行只和 $M$ 的第 r 行全连接, 这样就剪除了 $(r-1)/r$ 个参数 (按列映射的情况类似). 不过 weight pruning 会带来性能下降.
 
 ![Struce of self-attentive sentence embedding model](../img/self_attentive_sentence_embedding_structure.png)
 
