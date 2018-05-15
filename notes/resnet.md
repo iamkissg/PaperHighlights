@@ -1,4 +1,6 @@
-### [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385) **TL;DR** 本文提出了大名鼎鼎的*残差网络 ResNet*, 
+### [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385)
+
+**TL;DR** 本文提出了大名鼎鼎的*残差网络 ResNet*, 意在解决深度神经网络的退化问题. 将要学习的变换 H(x) 变形为 F(x)+x 的形式, 使得残差单元具有模拟恒等映射的能力, 从而缓解了深度带来的退化问题.
 
 #### Key Points
 
