@@ -13,12 +13,12 @@
     * LSTM 的初始 cell state 与 hidden state 由 annotation vectors 的均值 $\Sigma_i^L a_i / L$ 经不同的 MLP 得到;
     * 模型输出是上一时刻的输出, 当前时刻的 LSTM hidden state, context vector 的函数: $p(y_t|a, y_1^{t-1}) \propto exp(L_o(Ey_{t-1}+L_h h_t + L_z \hat{z_t}))$.
 * Stochastic Hard Attention (尚未打通 RL 的任督二脉, 在理解的基础上尽量保持原文原意)
-    * 此时将注意力点当作 latent variable, $\hat{z_t}$ 计算如下 ($s_{t,i} 是一个指示变量, 以 one-hot 形式表示, 当第 t 个词与第 i 个位置对齐时, 相应位置取 1):
-        * $s_t \sim Multinoulli({\alpha_i})$, 位置变量 $s_t$ 是以 \alpha_i 为参数的 Multinoulli 分布;
+    * 此时将注意力点当作 latent variable, $\hat{z_t}$ 计算如下 ($s_{t,i}$ 是一个指示变量, 以 one-hot 形式表示, 当第 t 个词与第 i 个位置对齐时, 相应位置取 1):
+        * $s_t \sim Multinoulli({\alpha_i})$, 位置变量 $s_t$ 是以 $\alpha_i$ 为参数的 Multinoulli 分布;
         * $p(s_{t, i}=1|s_j\<t, a)=\alpha_{t, i}$, attention weight $a_{t, i}$ 作为 t 时刻选中 i 位置的概率;
         * $\hat{z_t}=\Sigma_i s_{t, i}a_i$, 由于 $s_{t, i}$ 以 one-hot 形式表示, 有且仅有一个图片位置会被选中.
     * $\hat{z_t}$ 的计算方式导致 attention 不连续, 不能使用 BP 来优化, 文章用边缘对数似然的变分下界作为目标函数:
-        * $L_s=\Sigma_s p(s|a)logp(y|s,a)\le log\Sigma_s p(s|a)p(y|s, a)=logp(y|a)$
+        * $L_s=\Sigma_s p(s|a)logp(y|s,a)\le log\Sigma_s p(s|a)p(y|s, a)=logp(y|a)$.
     * 文中使用基于蒙特卡罗的采样近似法来估计参数梯度, 并采用移动平均基线来减小蒙特卡罗估计量的方差:
         * $b_k = 0.9\times b_{k-1}+0.1\times log p(y|\tilde{s_t},a)$, 此处 $\tilde{s_k}$ 是从 Multinoulli 分布采样的位置;
     * 为进一步减少蒙特卡罗估计量的方差, 在参数梯度中增加来基于 multinoulli 分布的熵 $H[s]$; 此外, 以 0.5 的概率将 $\tilde{s}$ 设为它的期望值 $\alpha$ (应是相对于采样而言). 综上, 参数的梯度近似为:
@@ -28,9 +28,9 @@
     * 以 conetxt vector 的期望作为 attention: $\mathbb{E}_p(s_t|\alpha)[\hat{z_t}]=\Sigma_{i=1}^L \alpha_{t,i}a_i$, 也就是 NMT 中计算 attention 的一般方法;
     * 文中介绍了 soft attention 是注意力位置上边缘似然的近似, 并给出了相应证明, 鉴于笔者实在看不懂这部分内容, 就不写出来误导读者了;
     * 为鼓励模型对图片各部分施加相同的注意力, 文中引入了 douly stochastic regularization, 使得 $\Sigma_t a_{ti}$ 并不恰好等于 1, 而是 $\Sigma_t a_{ti}\approx \tau$, 而 $\tau \ge \frac{L}{D}$. 本文实验证明, 该惩罚项提高了 BLEU, 并且有助于产生更丰富更具有描述性的 caption.
-    * 此外, 文章还让 soft attention 在每个时刻 t, 基于上一时刻的 LSTM 状态预测一个门口标量 $\beta$. 实验证明 $\beta$ 能使得 attention weights 更强调图中的物体
+    * 此外, 文章还让 soft attention 在每个时刻 t, 基于上一时刻的 LSTM 状态预测一个门控标量 $\beta$. 实验证明 $\beta$ 能使得 attention weights 更强调图中的物体
         * $attention=\beta \Sigma_i^L \alpha_i a_i$;
-        * $\beta_t=\sigma(f_\beta (h_{t-1}))$
+        * $\beta_t=\sigma(f_\beta (h_{t-1}))$.
 * 在所有比较中, 本文提出的模型都取得了 SOTA 的结果, 而且 除了两项指标, Hard-Attention 总是好于 Soft-Attention.
 
 ![show_and_tell.png](show_and_tell.png)
