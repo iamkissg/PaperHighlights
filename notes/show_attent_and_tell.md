@@ -29,7 +29,7 @@
     * 文中介绍了 soft attention 是注意力位置上边缘似然的近似, 并给出了相应证明, 鉴于笔者实在看不懂这部分内容, 就不写出来误导读者了;
     * 为鼓励模型对图片各部分施加相同的注意力, 文中引入了 douly stochastic regularization, 使得 $\Sigma_t a_{ti}$ 并不恰好等于 1, 而是 $\Sigma_t a_{ti}\approx \tau$, 而 $\tau \ge \frac{L}{D}$. 本文实验证明, 该惩罚项提高了 BLEU, 并且有助于产生更丰富更具有描述性的 caption.
     * 此外, 文章还让 soft attention 在每个时刻 t, 基于上一时刻的 LSTM 状态预测一个门口标量 $\beta$. 实验证明 $\beta$ 能使得 attention weights 更强调图中的物体
-        * $\attention=\beta \Sigma_i^L \alpha_i a_i$;
+        * $attention=\beta \Sigma_i^L \alpha_i a_i$;
         * $\beta_t=\sigma(f_\beta (h_{t-1}))$
 * 在所有比较中, 本文提出的模型都取得了 SOTA 的结果, 而且 除了两项指标, Hard-Attention 总是好于 Soft-Attention.
 
