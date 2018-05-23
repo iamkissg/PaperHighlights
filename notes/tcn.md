@@ -13,7 +13,7 @@
 * 为实现第二个目标, TCN 使用一维全卷积结构, 通过 zero padding 使各层保持相同长度.
 * 而所谓 causal convolution, 就是计算 t 时刻的输出时, 仅对前一层 t 时刻及之前的状态进行卷积.
 * Causal convolution 的叠加, 高层的感受野野/历史信息与网络层数呈线性关系. 对于超长序列, 网络必须很深, 才能捕捉到足够长的历史信息. 针对这个问题, 文中使用了 dilation convolution, 使得随网络的加深, 高层的感受野呈指数扩大.
-* Dilation convolution 的运算如下: $F(s)=\Sigma_{i=0}^{k-1}f(i)\cdot \bold{x}_{s-d\cdot i}$ ($\bold{x}$ 表示输入序列, f 表示 filter, d 是 dilation factor, k 是 filter size, $s-d\cdot i$ 意味着只对过去的状态作卷积). 看图最直观.
+* Dilation convolution 的运算如下: $F(s)=\Sigma_{i=0}^{k-1}f(i)\cdot \textbf{x}_{s-d\cdot i}$ ($\textbf{x}$ 表示输入序列, f 表示 filter, d 是 dilation factor, k 是 filter size, $s-d\cdot i$ 意味着只对过去的状态作卷积). 看图最直观.
 
 ![dilation_conv_in_tcn.png](../img/dilation_conv_in_tcn.png)
 
