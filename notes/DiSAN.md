@@ -30,15 +30,15 @@
 * Mask 是一个非零即负无穷的方阵, 因为 $exp(-\infty)=0$, 从而能抑制了依赖: $f(h_i, h_j)=c \cdot tanh([W^{(1)}h_i+W^{(2)}h_j + b^{(1)}]/c) + M_{ij}\mathbb{1}$ (此处对 token2token 进行了简化, 减少了参数).
 * 文中使用了 forward mask 与 backward mask. 前者的作用是使得只存在后面状态对前面状态的依赖; 后者则恰好相反.
 
-![disan-masks.png](disan-masks.png)
+![disan-masks.png](../img/disan-masks.png)
 
 * Fusion gate 是 dimension-wise 的, 即全面控制输出结果向量的每一位数字: $F=sigmoid(W^{(f1)}s + W^{(f2)}h +b^{f})$, $u=F\bigodot h+(1-F)\bigodot s$.
 
-![disa.png](disa.png)
+![disa.png](../img/disa.png)
 
 * 最终, DiSAN 由两个 DiSA blocks 和一个 multi-dimensional source2token self-attention layer 组成. 通过 DiSA 分别对前向与反向*上下文依赖 context dependency* 进行建模, 为每一个 token 生成一个*上下文感知 context-aware* 的表示; 然后用 source2token 计算整个序列的向量表示.
 
-![disan.png](disan.png)
+![disan.png](../img/disan.png)
 
 * 由于对 DiSA 模块进行了参数简化, DiSAN 相比绝大多数基于 Bi-LSTM 拥有更少的参数, 模型更简单.
 * 本文的实验部分证明:
