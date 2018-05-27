@@ -13,13 +13,13 @@
 * 本文提出了一种基于 attention 的模型 GAT, 其思想是通过 self-attention 的方法, 利用邻点来学习顶点的表示.
 * 由于 attention 可以看作对所有邻点的加权平均, 因此适用于任意邻点数的情况, 避免了 non-spectral approach 的问题.
 * 模型具有很好的泛化能力, 可应用于训练过程中未见过的图.
-* GAT 由单一的结构叠加得到, 文中称为 graph attentional layer.  该层的输入是一组顶点的特征 $\mathbf{h}={ {\vec{h_1}, \vec{h_2}, ..., \vec{h_N}}$, 期间通过 self-attention 计算各特征之间的依赖程度, 最终得到新的顶点特征, 作为输出 $\mathbf{h}^{'}={\vec{h_1}^{'}, \vec{h_2}^{'}, ..., \vec{h_N}^{'}}$.
+* GAT 由单一的结构叠加得到, 文中称为 graph attentional layer.  该层的输入是一组顶点的特征 $\mathbf{h}={ \vec{h_1}, \vec{h_2}, ..., \vec{h_N} }$, 期间通过 self-attention 计算各特征之间的依赖程度, 最终得到新的顶点特征, 作为输出 $\mathbf{h}^{'}={\vec{h_1}^{'}, \vec{h_2}^{'}, ..., \vec{h_N}^{'}}$.
 * 为获得对输入特征的有效转换, 对顶点特征先进行线性变换, 再计算它们的依赖程度: $e_{ij}=a(\mathbf{W}\vec{h_i},\mathbf{W}\vec{h_j})$.
 * $a(\cdot, \cdot)$ 由一个全连阶层和 LeakyReLU 组成: $a(\mathbf{W}\vec{h_i},\mathbf{W}\vec{h_j})=LeakyReLU(\vec{a}^T [\mathbf{W}\vec{h_i}||\mathbf{W}\vec{h_j} ])$ ($||$ 表示 concatenation).
 * 通过 masked attention 将图的结构信息注入模型中, 具体地: $\alpha_{ij}=softmax_j(e_{ij})=\frac{exp(e_{ij})}{\Sigma_{k\in N_i} exp(e_{ik})}$ (此处 $N_i$ 表示顶点 i 的邻点的集合, 包括自身).
 * 最后 $\vec{h_i^{'}}=\sigma(\Sigma_{j\in N_i}\alpha_{ij}\mathbf{W}\vec{h_j})$,
 * 文章发现使用 multi-head attention 有助于稳定学习过程, 并在中间层与输出层使用了不同的聚合策略:
-    * 中间层使用 concatenation 来拼接 multi-head 的结果: $\vec{h_i}^'={||}_{k=1}^K \sigma(\Sigma_{j\in N_i}\alpha_{ij}\mathbf{W}\vec{h_j})$
+    * 中间层使用 concatenation 来拼接 multi-head 的结果: $\vec{h_i^'}={||}_{k=1}^K \sigma(\Sigma_{j\in N_i}\alpha_{ij}\mathbf{W}\vec{h_j})$
     * 输出层使用对 multi-head 的结果求平均: $\vec{h_i^{'}}=\sigma(\frac{1}{K} \Sigma_{k=1}^K \Sigma_{j\in N_i}\alpha_{ij}\mathbf{W}\vec{h_j})$
 * Attention 能够在图的所有边上共享, 而不必知道图的全局结构 (之前的一些方法依赖于此). 这一方面带来了更好的泛化能力, 另一方面, 能通用于有向图与无向图.
 * 训练时, 在数据集较小的情况下, 使用 L2 regularization 和 Dropout; 在数据集足够大的情况下, 不使用 L2 regularization 和 Dropout.
