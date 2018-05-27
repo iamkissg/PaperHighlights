@@ -8,6 +8,8 @@
 
 #### Key Points
 
+* 本文提出了一种构造机器阅读语料的方法, 即自动生成文本的摘要, 以原文本为 context, 摘要为 question (query), 再从摘要中挖掉一个词作为 answer, 就得到了.
+* 为了使机器阅读的模型能专注于阅读和理解单一文本, 即不依靠常识或从 word embedding 等习得的知识, 文章提出了带语料中的实体名进行了匿名和随机化处理.
 * 本文提出了两个 attention-based reader models
 * attentive reader:
     1. 将 context 和 question 通过两个分离的 Bi-LSTM 进行编码. 对于 question encoder, 将最后的前向/反向输出拼接作为 question 的表示, 记作 u;
