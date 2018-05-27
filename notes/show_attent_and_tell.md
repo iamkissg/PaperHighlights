@@ -33,7 +33,7 @@
         * $\beta_t=\sigma(f_\beta (h_{t-1}))$.
 * 在所有比较中, 本文提出的模型都取得了 SOTA 的结果, 而且 除了两项指标, Hard-Attention 总是好于 Soft-Attention.
 
-![show_and_tell.png](show_and_tell.png)
+![show_and_tell.png](../img/show_and_tell.png)
 
 #### Notes/Questions
 
