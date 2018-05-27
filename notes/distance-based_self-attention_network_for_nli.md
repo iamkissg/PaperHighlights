@@ -10,13 +10,13 @@
 
 * 文章将提出的模型应用于自然语言推理 NLI, 沿用了传统框架 (如下). 创新点体现在 sentence encoder 上
 
-![overall_architecture_distance_self_attention_network.png](overall_architecture_distance_self_attention_network.png)
+![overall_architecture_distance_self_attention_network.png](../img/overall_architecture_distance_self_attention_network.png)
 
 * sentence encoder 基于 self-attention 对句子进行编码 (如下), 可以看到中间那一部分像极了 Transformer 的 encoder. 不同点在于, mutl-head attention 带上了 mask, 后一层的 add 变成了 gate.
 
 ![sentence_encoder_in_distance_self_attention_network.png](../img/sentence_encoder_in_distance_self_attention_network.png)
 
-* 可以看到, 模型从 forward 和 backward 两个方向分别进行了学习, 因此, 即使使用了 distance mask, 也没有抛弃 DiSAN 中提出的 directional mask. Masked Attention 的计算如下: $Masked(Q, K, V)=softmax(\frac{QK^T}{\sqrt{d_k}} + M_{dir}) + \alpha M_{dis}V$. 式中 $\alpha$ 起到调控作用.
+* 可以看到, 模型从 forward 和 backward 两个方向分别进行了学习, 因此, 即使使用了 distance mask, 也没有抛弃 DiSAN 中提出的 directional mask. Masked Attention 的计算如下: $Masked(Q, K, V)=softmax(\frac{QK^T}{\sqrt{d_k}} + M_{dir} + \alpha M_{dis})V$. 式中 $\alpha$ 起到调控作用.
 * Distance mask 中每个元素代表句中两个单词间绝对距离的负. 由于 $exp(-\inf)=0$, 因此距离越远, 负值越大, 单词间的依赖程度越低.
 
 ![distance_mask_distance_self_attention_network.png](../img/distance_mask_distance_self_attention_network.png)
