@@ -13,7 +13,7 @@
 * 本文提出了一种基于 attention 的模型 GAT, 其思想是通过 self-attention 的方法, 利用邻点来学习顶点的表示.
 * 由于 attention 可以看作对所有邻点的加权平均, 因此适用于任意邻点数的情况, 避免了 non-spectral approach 的问题.
 * 模型具有很好的泛化能力, 可应用于训练过程中未见过的图.
-* GAT 由单一的结构叠加得到, 文中称为 graph attentional layer.  该层的输入是一组顶点的特征 $\mathbf{h}={ \vec{h_1}, \vec{h_2}, ..., \vec{h_N} }$, 期间通过 self-attention 计算各特征之间的依赖程度, 最终得到新的顶点特征, 作为输出 $\mathbf{h}^{'}={\vec{h_1}^{'}, \vec{h_2}^{'}, ..., \vec{h_N}^{'}}$.
+* GAT 由单一的结构叠加得到, 文中称为 graph attentional layer.  该层的输入是一组顶点的特征 $\mathbf{h}=\left{ \vec{h_1}, \vec{h_2}, ..., \vec{h_N} \right}$, 期间通过 self-attention 计算各特征之间的依赖程度, 最终得到新的顶点特征, 作为输出 $\mathbf{h}^{'}=\left{\vec{h_1}^{'}, \vec{h_2}^{'}, ..., \vec{h_N}^{'}\right}$.
 * 为获得对输入特征的有效转换, 对顶点特征先进行线性变换, 再计算它们的依赖程度: $e_{ij}=a(\mathbf{W}\vec{h_i},\mathbf{W}\vec{h_j})$.
 * $a(\cdot, \cdot)$ 由一个全连阶层和 LeakyReLU 组成: $a(\mathbf{W}\vec{h_i},\mathbf{W}\vec{h_j})=LeakyReLU(\vec{a}^T [\mathbf{W}\vec{h_i}||\mathbf{W}\vec{h_j} ])$ ($||$ 表示 concatenation).
 * 通过 masked attention 将图的结构信息注入模型中, 具体地: $\alpha_{ij}=softmax_j(e_{ij})=\frac{exp(e_{ij})}{\Sigma_{k\in N_i} exp(e_{ik})}$ (此处 $N_i$ 表示顶点 i 的邻点的集合, 包括自身).
