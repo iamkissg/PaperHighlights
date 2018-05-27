@@ -1,17 +1,15 @@
-### [Title](URL)
+### Title
 
-#### TL;DR
+论文地址: [URL](URL)
+
+##### TL;DR
 
 text
 
-#### Key Points
+##### Key Points
 
 * ...
-* ...
-* ...
 
-#### Notes/Questions
+##### Notes/Questions
 
-* ...
-* ...
 * ...
