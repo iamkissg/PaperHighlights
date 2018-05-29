@@ -17,12 +17,11 @@
 
 #### Notes/Questions
 
+* ASReader 的答案出自材料. 这是一把双刃剑. 一方面它摒弃掉了 vocabularity 中其他的词, 99.9% 是噪声, 使得模型更简单更专注; 但对于复杂的情况, 答案不在 document 中, 需要再推理一下的情况就不太适用了. (关于这一点, 我觉得可以用一个 mask 来做一个权衡, 此时相当于不在 document 中的词的值都是 0, 可以用一个比较小的值来代替, 这样真正作为答案的词依然能出头).
 * 本文提出的模型很简单, 但嘈点颇多:
-    * ASReader 的答案出自材料, 从实验结果看, 确实取得了 SOTA 的成绩, 但对于复杂问题, 答案无法直接从材料中搜索得到的, 完全不可行;
     * 通过概率累加的方法求解答案, 强调了频率高的单词, attention 的作用被弱化了 (文中演示了一个错误用例);
     * 有一段很搞笑的分析, 话说一个问题的答案是一月和三月, 一般的 attention model, 两月的权值相等, 加权平均的结果就变成了二月, 且不说 embedding 之后还有其他层对 word vector 进行加工, 就是在 vector space, 月份会聚集在一起, 但也不意味着二月就处在一月和三月的中间 (就这样的论文, 还发在 ACL2016 上, 审稿人, 喵喵喵?);
     * 本文取得的 SOTA 是因为使用了 ensemble 方法, single asreader 和 single pre-SOTA 的模型有至少 1.9% 的差距, 科学的做法应该要提供其他模型的 ensemble 版, single vs single, ensemble vs ensemble;
-    * 针对上一点, 文中说前人的模型都采用了 dropout, 有助于提升 single model 的性能, 那 single vs ensemble 也说不通, 正确的做法是, 再创建一个 dropout version asreader, 其他方法的 ensemble version 依据需要;
+    * 针对上一点, 文中说前人的模型都采用了 dropout, 有助于提升 single model 的性能, 那 single vs ensemble 也说不通, 正确的做法是, 再创建一个 dropout version asreader, 其他方法的 ensemble version 依然需要;
     * 因为另一篇论文中提到本文所采用的数据集给人做也很难, 然后就说 ensemble asreader 已经接近数据集的极限了, 计算机在某些任务上超越人类早就屡见不鲜了吧?
-    * 一个很简单的模型, single model 的性能还不如之前的 single model, 然后各种吹各种黑, 切忌切忌.
-    * 搜了下, 在 openreview 上有一个 short paper 版, 那时候还不含提交到 ACL2016 时新冒出来的模型, 当时对 baseline 有巨大优势, 后来扩成 long paper, 加了新的 baseline, 没做到不吹不黑
+    * 搜了下, 在 openreview 上有一个 short paper 版, 那时候还不含提交到 ACL2016 时新冒出来的模型, 对当时的 baseline 有巨大优势, 后来扩成 long paper, 加了新的 baseline, 只剩 ensemble 有优势了.

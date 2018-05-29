@@ -9,13 +9,13 @@
 #### Key Points
 
 * 本文提出了一种构造机器阅读语料的方法, 即自动生成文本的摘要, 以原文本为 context, 摘要为 question (query), 再从摘要中挖掉一个词作为 answer, 就得到了.
-* 为了使机器阅读的模型能专注于阅读和理解单一文本, 即不依靠常识或从 word embedding 等习得的知识, 文章提出了带语料中的实体名进行了匿名和随机化处理.
+* 为了使机器阅读的模型能专注于阅读和理解单一文本, 即不依靠常识等, 文章对语料中的实体名进行了匿名和随机化处理.
 * 本文提出了两个 attention-based reader models
 * attentive reader:
     1. 将 context 和 question 通过两个分离的 Bi-LSTM 进行编码. 对于 question encoder, 将最后的前向/反向输出拼接作为 question 的表示, 记作 u;
     2. 对于 context, 每个时刻的前向/反向输出都作拼接, 得到一个序列. 以 u 为 query, context encoder 的输出序列为 key 和 value, 进行 attention 的计算, 得到输出序列的加权和, 作为 context 的表示, 记作 r;
     3. 最后通过一个非线性结合计算 answer: $g^{AR}(d, q)=tanh(W_{rg}r+W_{ug}u)$.
-* impatient reader: 与 attention reader 不同之处在于 attention 的计算方式, question 的每个单词都用于计算 attention, 此时得到的 context 的表示 r 是长度与 question 等长的序列, 且第 i 时刻的 r(i) 依赖于 r(i-1): $r(i)=y_d^T s(i)+tanh(W_{rr} r(i-1))$ ($s(i) 表示第 i 个question 单词计算得到 attention weight$
+* impatient reader: 与 attention reader 不同之处在于 attention 的计算方式, question 的每个单词都用于计算 attention, 此时得到的 context 的表示 r 是长度与 question 等长的序列, 且第 i 时刻的 r(i) 依赖于 r(i-1): $r(i)=y_d^T s(i)+tanh(W_{rr} r(i-1))$ ($s(i)$ 表示第 i 个question 单词计算得到 attention weight)
 * impatient reader 的设计模拟了人阅读的做法: 时不时地回过头去文本中搜索答案, 保留 r(i) 对 r(i-1) 的依赖就是 RNN 的一个实现.
 
 ![attentive_reader_impatient_reader.png](../img/attentive_reader_impatient_reader.png)
