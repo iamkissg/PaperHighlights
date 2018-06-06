@@ -4,13 +4,13 @@
 
 ##### TL;DR
 
-(14 年的论文) 提出了用于句子分类的单层 CNN 模型, 简单而强大.
+(14 年的论文) 提出了用于句子分类的单卷积层的 CNN 模型, 简单而强大.
 
 ##### Key Points
 
 * 本文针对句子分类任务, 提出了一个极简 CNN 模型, 仅包含: embedding Layer x1, Conv Layer x1, Pooling Layer x1, FC x1, output layer x1.
-* 不同于 CV 中使用的通常为 nxn 的 filter, CNN in NLP 使用的是横跨多个 word vector, 长度等同于 embedding_dim 的 filter. 一个 filter 对整个句子的 embedding matrix 计算一遍卷积之后, 得到特征向量: $\mathbf{c}=[c_1, c_2, \dots, c_{n-h+1}$.
-* 使用 max-over-timg pooling, 实际就是从一个 filter 得到的特征向量中取最大值: $\hat{c}=max(\mathbf{c})$.
+* 不同于 CV 中使用的通常为 nxn 的 filter, CNN in NLP 使用的是横跨多个 word vector, 长度等同于 embedding_dim 的 filter. 一个 filter 对整个句子的 embedding matrix 计算一遍卷积之后, 得到特征向量: $\mathbf{c}=[c_1, c_2, \dots, c_{n-h+1}]$.
+* 使用 max-over-time pooling, 实际就是从一个 filter 得到的特征向量中取最大值: $\hat{c}=max(\mathbf{c})$.
 * 将多个 filter 得到的 $\hat{c}$ 们拼接, 构成下一层 FC 的输入. FC 中使用了 dropout, 并对参数做了 l2-norm.
 * 文中还进行了一个多通道 word vector 的实验, 具体而言就是: 在输入层使用多个 embedding layer, 记为 multi-channel, filter 再对多个 embedding layer 做卷积, 就像 CV 一样. (如下)
 

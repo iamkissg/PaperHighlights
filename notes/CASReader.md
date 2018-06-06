@@ -1,4 +1,4 @@
-bv#### Consensus Attention-based Neural Networks for Chinese Reading Comprehension
+#### Consensus Attention-based Neural Networks for Chinese Reading Comprehension
 
 论文地址: [https://arxiv.org/abs/1607.02250](https://arxiv.org/abs/1607.02250)
 
