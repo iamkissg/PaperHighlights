@@ -19,7 +19,7 @@
 * 使用 K-best MIRA 算法学习三个 LM 的权值, 然后加权求和从 N-best 答案中选出最终答案.
 * 实验发现, Local N-gram LM 和另两个 LM 更有适合的场合. 对于 common noun 类型的答案, global features 帮助更大; 对于实体名作为答案的情况, local LM 可以提供更多有帮助的信息.
 
-![AoAReader.png](../img/AoAReader.png)
+![AoAReader.png](../../img/AoAReader.png)
 
 ##### Notes/Questions
 

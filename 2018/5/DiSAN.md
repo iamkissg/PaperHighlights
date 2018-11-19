@@ -14,7 +14,7 @@
 * Multi-dimensional attention 的依据是 $x_k$ 的每一位数字都是一个特征 (比如 king 的词向量, 某一位数字表征性别, 某一位数字表征尊贵程度), 可以拥有自己的 attention weight, 文中称为 feature-wise attention. 具体做法就是将上面 f 函数中的权值向量替换为权值矩阵: $z_i=f(x_i, q)=W^T\sigma(W^{(1)}x_i+W^{(2)}q + b^{(1)}) + b$ (增加了 bias, 不要紧). 如此得到的 $z_i$ 将是与$x_i$ 具有相同 embedding dimension 的向量, 该向量的每一位数字表征 $x_i$ 与 q 相应位置上的对齐程度. 后续的计算过程与上总体无异, 只是 z 成了矩阵, softmax 应用于 z 的第二维.
 * (左图维普通 attention, 右图为 Multi-Dimensional Attention)
 
-![tranditional_vs_multi-dimensional_attention.png](../img/tranditional_vs_multi-dimensional_attention.png)
+![tranditional_vs_multi-dimensional_attention.png](../../img/tranditional_vs_multi-dimensional_attention.png)
 
 * Multi-dimensional attention 对于同一个 token embedding 的不同 feature 计算不同的 attention weight, 充分利用了上下文与 token 不同特征之间的对齐程度. 还是以 king 为例, 当上下文强调性别属性时, 性别特征将得到更大的 attention weight, 而尊贵程度不那么重要, 可能就只分配很小的 attention weight. 对于一词多义的情况, multi-dimensional attention 还具有一定的消除歧义作用
 * 在 multi-dimensional attention 的基础上, 文章得到了 2 个 self-attention 变种, 两者的差别在于 query:
@@ -31,15 +31,15 @@
 * Mask 是一个非零即负无穷的方阵, 因为 $exp(-\infty)=0$, 从而能抑制依赖关系: $f(h_i, h_j)=c \cdot tanh([W^{(1)}h_i+W^{(2)}h_j + b^{(1)}]/c) + M_{ij}\mathbb{1}$ (此处对 token2token 进行了简化, 减少了参数).
 * 文中使用了 forward mask 与 backward mask. 前者的作用是使得只存在后面状态对前面状态的依赖; 后者则恰好相反.
 
-![disan-masks.png](../img/disan-masks.png)
+![disan-masks.png](../../img/disan-masks.png)
 
 * Fusion gate 是 dimension-wise 的, 即全面控制输出结果向量的每一位数字: $F=sigmoid(W^{(f1)}s + W^{(f2)}h +b^{f})$, $u=F\bigodot h+(1-F)\bigodot s$.
 
-![disa.png](../img/disa.png)
+![disa.png](../../img/disa.png)
 
 * 最终, DiSAN 由两个 DiSA blocks 和一个 multi-dimensional source2token self-attention layer 组成. 通过 DiSA 分别对前向与反向*上下文依赖 context dependency* 进行建模, 为每一个 token 生成一个*上下文感知 context-aware* 的表示; 然后用 source2token 计算整个序列的向量表示.
 
-![disan.png](../img/disan.png)
+![disan.png](../../img/disan.png)
 
 * 由于对 DiSA 模块进行了参数简化, DiSAN 相比绝大多数基于 Bi-LSTM 拥有更少的参数, 模型更简单.
 * 本文的实验部分证明:

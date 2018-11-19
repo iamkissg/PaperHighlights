@@ -24,7 +24,7 @@
 * Attention 能够在图的所有边上共享, 而不必知道图的全局结构 (之前的一些方法依赖于此). 这一方面带来了更好的泛化能力, 另一方面, 能通用于有向图与无向图.
 * 训练时, 在数据集较小的情况下, 使用 L2 regularization 和 Dropout; 在数据集足够大的情况下, 不使用 L2 regularization 和 Dropout.
 
-![graph_attention_networks.png](../img/graph_attention_networks.png)
+![graph_attention_networks.png](../../img/graph_attention_networks.png)
 
 #### Notes/Questions
 

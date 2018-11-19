@@ -26,11 +26,11 @@ PS: 实验需要, 这是我看的第一篇 NER 的论文, 会记录得稍微详�
     * 计算 X 与 y 的匹配程度, 用一个 score 函数表示: $s(X, y)=\Sigma_{i=0}^n A_{y_i,y_{i+1}}+\Sigma_{i=1}^n P_{i,y_i}$.
     * 文中的 CRF 建立在 Bi-LSTM 之上, 因此 P 就是 Bi-LSTM 的输出矩阵, 要注意的是, 它的尺寸是 $n\times k$, k 是标签数, 因此 P 中每个元素都表示一个词与一个标签之间的相关度 (还不能说是概率, 没有经 softmax 处理过) 我看过一些教程, P 也被称为 Emission Matrix;
     * A 则被称为 Transition Matrix, 通俗地讲就是从一个标签转移到另一个标签的分数 (同理不能称为概率), 显然它是一个非对称方阵, 式中的 $y_0$ 和 $y_n$ 是开始和结束的标签, 因此 A 是 k+2 的方阵;
-    * 用 softmax 来计算 p(y|X): ![](../img/nn4ner_softmax.png) ($Y_X$ 是标签序列的解空间);
-    * 这种问题, 当然会求对数咯: ![](../img/crf_log-probability.png).
+    * 用 softmax 来计算 p(y|X): ![](../../img/nn4ner_softmax.png) ($Y_X$ 是标签序列的解空间);
+    * 这种问题, 当然会求对数咯: ![](../../img/crf_log-probability.png).
     * NER 可通过**动态规划**来解决, 以避免超大的计算量 (标签序列的解空间大), 文中仅考虑了2-gram 之间的交互.
 
-![](../img/nn4ner_architecutre.png)
+![](../../img/nn4ner_architecutre.png)
 
 * 文章发现, 在 Bi-LSTM 与 CRF 之间增加一层, 即对 Bi-LSTM 的输出状态现进行一番变换, 能显著提高模型.
 * IOB (inside, outside, beginning) 标签格式, token 是一个名称的首词是, 标记为 B-label, 非首词则标记为 I-label, 否则归为 O.
@@ -41,7 +41,7 @@ PS: 实验需要, 这是我看的第一篇 NER 的论文, 会记录得稍微详�
     * OUTPUT: 将缓存中的一个词直接压入输出栈 (另一个栈);
     * REDUCE(y): 不同于一般的 pop 操作, 将栈顶元素全部出栈, 即创建了一个块, 标记为 y, 再将这个块压入输入栈.
 
-![](../img/nn4ner_transition_sequence.png)
+![](../../img/nn4ner_transition_sequence.png)
 
 * 在给定当前栈, 缓存, 输出栈的内容以及历史操作的情况下, transition-based model 输出下一个操作.
 * (根据我的理解) 文章使用多个 LSTM 来模拟栈, 缓存, 输出栈, 历史操作, 每一时刻, 根据 chunking 算法, 这 4 部分的内容都会发生改变, 因此能对时间进行建模, 即相当于是对 4 部分都做了一个 embedding, 各自输出一个固定维数的向量. 然后文章再做一个拼接, 以此来求下一个操作.

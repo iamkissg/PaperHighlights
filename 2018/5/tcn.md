@@ -15,11 +15,11 @@
 * Causal convolution 的叠加, 高层的感受野野/历史信息与网络层数呈线性关系. 对于超长序列, 网络必须很深, 才能捕捉到足够长的历史信息. 针对这个问题, 文中使用了 dilation convolution, 使得随网络的加深, 高层的感受野呈指数扩大.
 * Dilation convolution 的运算如下: $F(s)=\Sigma_{i=0}^{k-1}f(i)\cdot \textbf{x}_{s-d\cdot i}$ ($\textbf{x}$ 表示输入序列, f 表示 filter, d 是 dilation factor, k 是 filter size, $s-d\cdot i$ 意味着只对过去的状态作卷积). 看图最直观.
 
-![dilation_conv_in_tcn.png](../img/dilation_conv_in_tcn.png)
+![dilation_conv_in_tcn.png](../../img/dilation_conv_in_tcn.png)
 
 * TCN 的感受野依赖于上式中的 dilation factor d 和 filter/kernel size k, 以及网络深度 n. 为获得足够大的感受野, TCN 还是不得不增加网络的深度, 因此它构造了残差单元来训练更深的网络. (残差单元在 ResNet 的笔记中有详细介绍)
 
-![residual_block_in_tcn.png](../img/residual_block_in_tcn.png)
+![residual_block_in_tcn.png](../../img/residual_block_in_tcn.png)
 
 * TCN 在序列建模方面的优势是:
     * 可并行性 (只要抛弃了 RNN, 神经网络基本都具有了这一优点);

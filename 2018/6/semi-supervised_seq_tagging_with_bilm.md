@@ -15,11 +15,11 @@
     * 真正进行标注学习时, 计算每个 token 的 word embedding 和 LM embedding, 拼接 (回忆 ELMo, 前者捕捉上下文无关语义, 后者捕捉上下文依赖语义);
     * 序列标注的任意模型 (同昨天的模型类似, 本文采用的是 RNN+CRF).
 
-![](../img/TagLM_main_components.png)
+![](../../img/TagLM_main_components.png)
 
 * 实验中, 本文使用的已经是 biLM 了, 再具体一点, 弥补下 ELMo 一张图都没有的缺陷:
 
-![](../img/TagLM_overview.png)
+![](../../img/TagLM_overview.png)
 
 * 本文对学习率的调整, 关注一下: 先固定学习率学习, 直到在验证集上取得最好的性能, 之后每 5 个 epoch 将学习率缩小 10 倍, 然后重复这个缩小的过程一遍, 结束.
 * 当数据量较小时, 计算模型性能的方差很重要.

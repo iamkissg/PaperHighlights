@@ -23,7 +23,7 @@
     * 边长大于等于 2 时, BLEU 已经趋于不变;
     * 使用第二种扩展, 即在计算对齐程度度时, 加入相对位置编码已经能足够了; (再使用第一种扩展并没有带来性能提升).
  
-![relative_position_as_edge.png](../img/relative_position_as_edge.png)
+![relative_position_as_edge.png](../../img/relative_position_as_edge.png)
 
 #### Notes/Questions
 

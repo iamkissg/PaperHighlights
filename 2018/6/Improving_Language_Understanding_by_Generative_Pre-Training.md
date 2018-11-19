@@ -23,7 +23,7 @@
     * 文本相似性任务: 同样用分隔符将两个句子拼接起来, 两种拼接的结果都作为模型输入, 得到两个序列表示, 做一个计算, 然后输入输出层;
     * QA: 此任务用分隔符将 context, question, answer 都拼接起来作为模型输入, 有多少个候选答案, 就学习多少个序列表示, 最后将相当于得到了答案的分布.
 
-![](../img/transformer_lm.png)
+![](../../img/transformer_lm.png)
 
 * 本文使用 transformer decoder 来学习文本表示, 训练过程和模型参数的设置沿用了前两篇 transformer 论文中的设置.
 * 实验发现:

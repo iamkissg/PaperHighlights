@@ -27,7 +27,7 @@
     1. discriminative fine-tuning: 具体而言, 就是为 LM 的每一层分配不同的学习率, 参数更新时, 各层按照各自的学习率进行更新. 此处作者提出了一个技巧, 先通过只调整最后一层的参数确定一个合适的学习率, 然后往前的每一层都使用后一层学习率的2.6分之一倍.
     2. slanted triangular learning rates (STLR): 该学习率的更新方法是为了实现快速收敛/调参, 学习率先快速增大, 后缓慢减小. 学习率的更新是线性的, 故呈现出斜三角的形状 (公式见 Notes)
 
-![](../img/slanted_triangular_learning_rate_schedule.png)
+![](../../img/slanted_triangular_learning_rate_schedule.png)
 
 * 在第三步中分类器的 fine-tuning, 文章在前两步习得的模型之上追加了两个线性层和输出层. (再对比着看, 可见昨天的方法的改动之少了)
 * 考虑到文本分类任务上, 起关键作用的单词并不多. 文章以 LM 中最后一层 (RNN) 的最后的状态拼接上最大池化和平均池化, 作为追加层的输入.
@@ -42,4 +42,4 @@
 * 本文使用的缩写数量绝对是我见过最多的, 就像百年孤独中的人物名称一样. 所以缩写虽好, 也不能滥用.
 * 以下便是公式化的 STLR. T 是预设的训练次数, cut_frac_是学习率增大过程的比例, 因此 cut 就是临界点, p 是关于增大或减小学习率的迭代次数的分数, ratio 是最大 LR 和最小 LR 的差值.
 
-![](../img/slanted_triangular_learning_rate_eq.png)
+![](../../img/slanted_triangular_learning_rate_eq.png)

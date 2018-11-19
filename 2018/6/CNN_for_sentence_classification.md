@@ -14,7 +14,7 @@
 * 将多个 filter 得到的 $\hat{c}$ 们拼接, 构成下一层 FC 的输入. FC 中使用了 dropout, 并对参数做了 l2-norm.
 * 文中还进行了一个多通道 word vector 的实验, 具体而言就是: 在输入层使用多个 embedding layer, 记为 multi-channel, filter 再对多个 embedding layer 做卷积, 就像 CV 一样. (如下)
 
-![CNN4SC_architecture.png](../img/CNN4SC_architecture.png)
+![CNN4SC_architecture.png](../../img/CNN4SC_architecture.png)
 
 * 文中采用了 4 种不同的 word vector 策略: 不使用预训练的, 使用预训练的但不 fine-tune, 使用预训练的并 fine-tune, 双通道(都使用预训练的, 一组不 fine-tune, 一组 fine-tune). 结果:
     * 多通道与单通道各有胜负;

@@ -13,7 +13,7 @@
     2. 计算 context document 中的每个单词的 word vector (称为 contextual embedding);
     3. 计算 query 与每个 contextual embedding 的 dot product, 再对结果使用 softmax 得到每个单词作为答案的概率, 最后求同一个单词在所有位置上作为答案的概率和, 最高者为答案.
 
-![](../img/asreader.png)
+![](../../img/asreader.png)
 
 #### Notes/Questions
 

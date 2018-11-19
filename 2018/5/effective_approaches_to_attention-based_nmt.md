@@ -39,9 +39,9 @@
 
 * 下图分别是 global attention model 与 local attention model:
 
-![global attention model](../img/global_attention_model.png)
+![global attention model](../../img/global_attention_model.png)
 
-![loca attention model](../img/local_attention_model.png)
+![loca attention model](../../img/local_attention_model.png)
 
 #### Notes/Questions
 

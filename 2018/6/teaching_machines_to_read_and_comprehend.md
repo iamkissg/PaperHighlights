@@ -18,7 +18,7 @@
 * impatient reader: 与 attention reader 不同之处在于 attention 的计算方式, question 的每个单词都用于计算 attention, 此时得到的 context 的表示 r 是长度与 question 等长的序列, 且第 i 时刻的 r(i) 依赖于 r(i-1): $r(i)=y_d^T s(i)+tanh(W_{rr} r(i-1))$ ($s(i)$ 表示第 i 个question 单词计算得到 attention weight)
 * impatient reader 的设计模拟了人阅读的做法: 时不时地回过头去文本中搜索答案, 保留 r(i) 对 r(i-1) 的依赖就是 RNN 的一个实现.
 
-![attentive_reader_impatient_reader.png](../img/attentive_reader_impatient_reader.png)
+![attentive_reader_impatient_reader.png](../../img/attentive_reader_impatient_reader.png)
 
 #### Notes/Questions
 

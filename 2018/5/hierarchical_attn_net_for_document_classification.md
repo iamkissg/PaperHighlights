@@ -12,7 +12,7 @@
     2. 使用 $a_i=\frac{exp(u_i^T u_s)}{\Sigma_i exp(u_i^T us_)}$, 计算各 sentence vectors 的 attention weights ($u_s$ 即 sentence context vector);
     3. 通过加权求和 $v=\Sigma_i a_i h_i$ 得到 document vector.
 
-![HAN for document classification](../img/hierarchical_attn_net_for_document_classification.png)
+![HAN for document classification](../../img/hierarchical_attn_net_for_document_classification.png)
 
 #### Notes/Questions
 

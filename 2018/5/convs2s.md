@@ -41,7 +41,7 @@
     * 减少 attention 会降低模型性能, 由于计算可并行, multi-step attention 带来的计算开销并不大;
     * 更小的 kernel, 更深的网络, 更好的性能. 这一点对于 encoder 更明显
 
-![convs2s.png](../img/convs2s.png)
+![convs2s.png](../../img/convs2s.png)
 
 #### Notes/Questions
 

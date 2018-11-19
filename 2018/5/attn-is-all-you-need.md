@@ -22,7 +22,7 @@
     2. Label Smoothing: 训练时使用. 伤害了 *perplexity*, 但提高了 accuracy 和 BLEU.
 * 训练时, batch 应该是不固定的. 根据句子近似序列长度来组织 batch, 使得每一个 batch 包含约 25000 个 source token 和 25000 个 target token.
 
-![transformer model architecture](../img/transformer_model_architecture.png)
+![transformer model architecture](../../img/transformer_model_architecture.png)
 
 #### Notes/Questions
  

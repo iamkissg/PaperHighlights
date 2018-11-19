@@ -26,7 +26,7 @@
 * 最后, 和 ASReader 一样, 对 document 中 unique word, 计算所有位置上的概率和: $P(w|D, Q)=\Sigma_{i\in I(w, D)s_i,w \in V}$ ($I(w, D)$ 是指示函数, 表明单词 w 出现在 D 的位置).
 * 文中对于 unknown words 的处理 mark 一下. 将 200K 的 vocab 砍到 100K, 所有的 unknown words 映射到不同的 10 个符号, 而不是 <unk> 就完了. 该方法出自另一篇论文, 余以为 10 个符号的含义可以自由发挥, 不必拘泥.
 
-![CASReader.png](../img/CASReader.png)
+![CASReader.png](../../img/CASReader.png)
 
 ##### Notes/Questions
 

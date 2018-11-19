@@ -21,7 +21,7 @@
 * 文章指出使用 x 作为 shortcut connnection, 即不引入额外的变换参数对 bottleneck 架构很关键. 当在 shortcut connection 上使用某种变换, 由于 shortcut 连接在两个高维图像 (两个1x1卷积层) 的两端, 时间复杂度和模型尺寸将翻倍.
 * 实验分析表明: 残差函数通常比非残差函数函接近于 0, 这使得残差单元的表现更倾向于 identity mapping. 而随着网络的加深, ResNet 的单独一层对信号/数据的修改变得更小.
 
-![residual_function.png](../img/residual_function.png)
+![residual_function.png](../../img/residual_function.png)
 
 #### Notes/Questions
 

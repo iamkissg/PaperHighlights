@@ -10,16 +10,16 @@
 
 * 文章将提出的模型应用于自然语言推理 NLI, 沿用了传统框架 (如下). 创新点体现在 sentence encoder 上
 
-![overall_architecture_distance_self_attention_network.png](../img/overall_architecture_distance_self_attention_network.png)
+![overall_architecture_distance_self_attention_network.png](../../img/overall_architecture_distance_self_attention_network.png)
 
 * sentence encoder 基于 self-attention 对句子进行编码 (如下), 可以看到中间那一部分像极了 Transformer 的 encoder. 不同点在于, mutl-head attention 带上了 mask, 后一层的 add 变成了 gate.
 
-![sentence_encoder_in_distance_self_attention_network.png](../img/sentence_encoder_in_distance_self_attention_network.png)
+![sentence_encoder_in_distance_self_attention_network.png](../../img/sentence_encoder_in_distance_self_attention_network.png)
 
 * 可以看到, 模型从 forward 和 backward 两个方向分别进行了学习, 因此, 即使使用了 distance mask, 也没有抛弃 DiSAN 中提出的 directional mask. Masked Attention 的计算如下: $Masked(Q, K, V)=softmax(\frac{QK^T}{\sqrt{d_k}} + M_{dir} + \alpha M_{dis})V$. 式中 $\alpha$ 起到调控作用.
 * Distance mask 中每个元素代表句中两个单词间绝对距离的负. 由于 $exp(-\inf)=0$, 因此距离越远, 负值越大, 单词间的依赖程度越低.
 
-![distance_mask_distance_self_attention_network.png](../img/distance_mask_distance_self_attention_network.png)
+![distance_mask_distance_self_attention_network.png](../../img/distance_mask_distance_self_attention_network.png)
 
 * Distance mask 强化单词对邻近单词的依赖, 作用类似于 CNN 的 filter提取局部特征. 不同点在于, 前者是对整个句子的 mask, 而后者仅仅局部像素的 mask.
 * Masked multi-head attention 之后是一个 Fusion gate, 控制 attention 输出和 word embedding 的比例: $Gate(S, H)=F\bigodot S^F+(1-F)\bigodot H^F, where F=sigmoid(S^F+H^F+b^F)$ (S 是 word embedding 的矩阵, H 是 attention 的矩阵).

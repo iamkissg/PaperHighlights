@@ -17,7 +17,7 @@
 * 胶囊的一个缺陷是, 一个胶囊只能表示实体的一种实例化参数.
 * 下图是文中实验的所用的网络结构. 中间的圆角矩形就表示一个 Capsule. 其中下面的红色矩形代表识别单元, 上面的绿色矩形表示生成单元.
 
-![transforming_ae.png](../img/transforming_ae.png)
+![transforming_ae.png](../../img/transforming_ae.png)
 
 #### Notes/Questions
 
@@ -25,6 +25,6 @@
 * 笔者阅读时, 对于实验部分选择性浏览了一遍, 不得不说, 太晦涩了. 虽然道理讲得很清爽, 但实验部分真的不知所云啊.
 * 笔者是在看了 CapsNet 的文章两篇之后, 才转而看这篇文章的. CapsNet 中许多没有讲清楚的概念, 都能在本文找到答案, 尤其是 CapsNet 的提出的哲学. 举个例子, CapsNet 中提到 **Inverse Graphic**, 没有 CG 背景的同学 (比如我) 会一头雾水. 有了本文的背景, 结合下图, 包秒懂.
 
-![cg_rendering.png](../img/cg_rendering.png)
+![cg_rendering.png](../../img/cg_rendering.png)
 
-![cg_inverse_rendering.png](../img/cg_inverse_rendering.png)
+![cg_inverse_rendering.png](../../img/cg_inverse_rendering.png)

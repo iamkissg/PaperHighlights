@@ -15,7 +15,7 @@
 * 对齐时, 在整个输入序列上搜索相关部分, 每个词都以一定概率和翻译结果对齐, 好处是可以考虑更多的上下文信息, 并很自然地解决了词组的翻译问题, 带来的问题是, 对于 $T_x$ 长度的 source 和 $T_y$ 长度的 target, 要进行 $T_x \times T_y$ 对齐运算.
 * 具体地, 文中使用感知机来计算相似度, 即 $a(s_{i-1}, h_j)=v_a^T tanh(W_a s_{i-1}+U_a h_j)$
 
-![Alignment Illustration](../img/origin_nmt_alignment.png)
+![Alignment Illustration](../../img/origin_nmt_alignment.png)
 
 #### Notes/Questions
 

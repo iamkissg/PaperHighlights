@@ -8,7 +8,7 @@
 
 ##### Key Points
 
-![1l-cnn4sc.png](../img/1l-cnn4sc.png)
+![1l-cnn4sc.png](../../img/1l-cnn4sc.png)
 
 * 本文采用 [http://www.aclweb.org/anthology/D14-1181](http://www.aclweb.org/anthology/D14-1181) 提出的 CNN (以下简称 CNN4SC), 网络结构请看之前的笔记, 不再赘述. 就以下几方面进行了研究:
     * 词向量的类型;

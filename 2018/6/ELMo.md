@@ -13,8 +13,8 @@
     2. 单词在不同上下文的使用是变化的 (即一词多义).
 * 最常使用 CBOW, Skip-gram, GloVe 等方法, 将单词视作基本单元, 只能学到每个单词的一个上下文无关的表示, 只能捕捉单词的句法和语义特征; 近来的研究开始关注到上下文依赖的词表示, 开始学习 contextual embedding.
 * 为解决上述问题, 文章在大型语料上训练了一个双向语言模型 (biLM), 用嵌入层的向量和双向 LSTM 的隐藏状态的函数作为最终的词向量. 高层的 LSTM 状态能捕捉词义的上下文依赖信息了; 低层的向量则能对句法进行建模, 学到上下文无关特征.
-* EMLo 模型由 embedding layer 与 L 层 bi-LSTM 组成, 它的状态可以表示为: ![](../img/emlo_R_k.png) (x 即为 embedding layer 的输出向量).
-* 最终, 将 EMLo 的各层状态向量压缩为一个向量: ![](../img/emlo_computation.png) (其中 $\gamma$ 与 s 分别起控制缩放与权值的作用, 取值根据下游任务来. 可以认为在下游任务确定之前, EMLo 并不导出词向量, 就保持了多层状态向量)
+* EMLo 模型由 embedding layer 与 L 层 bi-LSTM 组成, 它的状态可以表示为: ![](../../img/emlo_R_k.png) (x 即为 embedding layer 的输出向量).
+* 最终, 将 EMLo 的各层状态向量压缩为一个向量: ![](../../img/emlo_computation.png) (其中 $\gamma$ 与 s 分别起控制缩放与权值的作用, 取值根据下游任务来. 可以认为在下游任务确定之前, EMLo 并不导出词向量, 就保持了多层状态向量)
 * 文中指出一点: biLM 不同层的激活值可能会有不同的分布, 可采用 Layer Normlaition. (这在 Attention is All You Need 和 Distance Self-Attention Network 中都使用过)
 * 将 ELMo 用于下游任务时, 文中提供的思路是, 直接在 biLM 之上新增神经网络层, 固定 biLM 的参数 (根据实际情况, 继续 fine-tune 应该也没问题). 后续层的输入, 根据任务的不同, 调整为 $[x_k, ELMo_k^{task}]$ 或 $[h_k, ELMo_k^{task}]$.
 * 适当地使用 dropout 和 regularization 对于 ELMo 的效果更好.

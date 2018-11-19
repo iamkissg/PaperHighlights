@@ -22,7 +22,7 @@
     * 文中使用基于蒙特卡罗的采样近似法来估计参数梯度, 并采用移动平均基线来减小蒙特卡罗估计量的方差:
         * $b_k = 0.9\times b_{k-1}+0.1\times log p(y|\tilde{s_t},a)$, 此处 $\tilde{s_k}$ 是从 Multinoulli 分布采样的位置;
     * 为进一步减少蒙特卡罗估计量的方差, 在参数梯度中增加来基于 multinoulli 分布的熵 $H[s]$; 此外, 以 0.5 的概率将 $\tilde{s}$ 设为它的期望值 $\alpha$ (应是相对于采样而言). 综上, 参数的梯度近似为:
-        * ![](../img/partial_L_s_partial_W.png) $\lambda_r$ 与 $\lambda_e$ 是由交叉验证选择的超参数.
+        * ![](../../img/partial_L_s_partial_W.png) $\lambda_r$ 与 $\lambda_e$ 是由交叉验证选择的超参数.
     * 使用强化学习来求解, 奖励为采样的*注意力迹 attention trajectory* 下, 与目标句子的对数似然成比例的实值.
 * Deterministic Soft Attention
     * 以 conetxt vector 的期望作为 attention: $\mathbb{E}_p(s_t|\alpha)[\hat{z_t}]=\Sigma_{i=1}^L \alpha_{t,i}a_i$, 也就是 NMT 中计算 attention 的一般方法;
@@ -33,7 +33,7 @@
         * $\beta_t=\sigma(f_\beta (h_{t-1}))$.
 * 在所有比较中, 本文提出的模型都取得了 SOTA 的结果, 而且 除了两项指标, Hard-Attention 总是好于 Soft-Attention.
 
-![show_and_tell.png](../img/show_and_tell.png)
+![show_and_tell.png](../../img/show_and_tell.png)
 
 #### Notes/Questions
 
