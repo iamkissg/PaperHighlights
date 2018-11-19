@@ -1,11 +1,17 @@
 # Papernotes
 
+
+#### 2018-11
+
+* [Learning Word Meta-Embeddings](https://github.com/iamkissg/papernotes/blob/master/2018/11/learning_word_meta-embeddings.md)
+* [Frustratingly Easy Meta-Embedding – Computing Meta-Embeddings by Averaging Source Word Embeddings](https://github.com/iamkissg/papernotes/blob/master/2018/11/wme_av.md)
+
 #### 2018-06
 
-* [Teaching Machines to Read and Comprehend](https://github.com/iamkissg/papernotes/blob/master/notes/teaching_machines_to_read_and_comprehend.md)
-* [Attention-over-Attention Neural Networks for Reading Comprehension](https://github.com/iamkissg/papernotes/blob/master/notes/AoA_Reader.md)
-* [Consensus Attention-based Neural Networks for Chinese Reading Comprehension](https://github.com/iamkissg/papernotes/blob/master/notes/CASReader.md)
-* [Convolutional Neural Networks for Sentence Classification](https://github.com/iamkissg/papernotes/blob/master/notes/CNN_for_sentence_classification.md)
+* [Teaching Machines to Read and Comprehend](https://github.com/iamkissg/papernotes/blob/master/2018/6/teaching_machines_to_read_and_comprehend.md)
+* [Attention-over-Attention Neural Networks for Reading Comprehension](https://github.com/iamkissg/papernotes/blob/master/2018/6/AoA_Reader.md)
+* [Consensus Attention-based Neural Networks for Chinese Reading Comprehension](https://github.com/iamkissg/papernotes/blob/master/2018/6/CASReader.md)
+* [Convolutional Neural Networks for Sentence Classification](https://github.com/iamkissg/papernotes/blob/master/2018/6/CNN_for_sentence_classification.md)
 * [Deep contextualized word representations](https://github.com/iamkissg/papernotes/blob/master/notes/ELMo.md)
 * [A Sensitivity Analysis of (and Practitioners’ Guide to) Convolutional Neural Networks for Sentence Classification](https://github.com/iamkissg/papernotes/blob/master/notes/a_sensitivity_analysis_of_cnn4sc.md)
 
@@ -34,12 +40,8 @@
 
 #### 历史遗留笔记 (周记)
 
-* [2017](2017)
-    * [11](2017/11)
-        * [1](2017/11/44_1.md)
-        * [2](2017/11/45_1.md)
-        * [3](2017/11/48_1.md)
-    * [12](2017/12)
-        * [1](2017/12/1.md)
 * [2018](2018)
     * [1](2018/1)
+* [2017](2017)
+    * [12](2017/12)
+    * [11](2017/11)
