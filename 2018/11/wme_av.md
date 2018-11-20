@@ -12,15 +12,17 @@
 
 ![E conc](../../img/11/wme_e_conc.png)
 
-使用平均法代替拼接, 两个向量在新空间的欧式距离计算如下. 此时 theta 似乎无解了.欧式距离的期望正比于拼接法的欧式距离.
+使用平均法代替拼接, 两个向量在新空间的欧式距离计算如下. 此时 theta 似乎无解了.
 
 ![E avg](../../img/11/wme_e_avg.png)
 
-一个理论完美解决了这个问题:
+好在 [Distributions of angles in random packing on spheres](https://orfe.princeton.edu/~jqfan/papers/13/packing.pdf) 提出的以下理论完美解决了这个问题:
 
 > N 维空间, 随着空间中的点趋向于无穷多, 任意两点间的夹角成高斯分布, 分布的均值就是 pi/2, 即 90 度.
 
-Word embeddings 基本满足上述要求: 维数算挺高了, vocab 也挺大. 于是, 平均法得到的
+Word embeddings 基本满足上述要求: 维数算挺高了, vocab 也挺大. 于是, 平均法得到的欧式距离的期望正比于拼接法的欧式距离, 从而平均法有效.
+
+![angle distribution](../../img/11/avg_angle_distribution.png)
 
 #### 备注
 
