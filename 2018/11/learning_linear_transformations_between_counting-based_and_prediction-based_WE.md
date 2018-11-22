@@ -1,6 +1,6 @@
 ### Learning linear transformations between counting-based and prediction-based word embeddings
 
-论文地址: [https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0184544](https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0184544)
+论文地址: [https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0184544](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0184544)
 
 ##### 要点
 
