@@ -22,12 +22,12 @@
 
 ![tianzige-cnn.png](../../img/201901/tianzige-cnn.png)
 
-从第 3 点, 我们可以知道 glyce 并不像一些 word/character embedding 的用例是固定不变的, 单纯地使用 glyce 时, 它像一个没有使用 pre-trained word/character embedding 的 embeedding layer, 只是 embedding layer 被替换成了以上的更复杂的 Tianzige-CNN.
+从第 3 点, 我们可以知道 glyce 并不像一些 word/character embedding 的用例是固定不变的, 单纯地使用 glyce 时, 它像一个没有使用 pre-trained word/character embedding 的可训练的 embeedding layer, 只是 embedding layer 被替换成了以上的更复杂的 Tianzige-CNN.
 
-除了使用 glyce 代替 character embedding, 文章还提出了联合使用 glyce embedding 和 character embedding 的方法, 称为 glyce-char embedding. 在此基础上, 还可以联合使用 glyce-char embedding 和 word embedding, 得到 glyce-word embedding. 组合的方法可以很灵活, 以下是示意图. 鉴于中文的词语可以包含任意多的汉字, 文章在所有 glyce-char embeddings 之上使用了一个 max-pooling.
+除了使用 glyce 代替 character embedding, 文章还提出了联合使用 glyce embedding 和 character embedding 的方法, 称为 glyce-char embedding. 在此基础上, 还可以联合使用 glyce-char embedding 和 word embedding, 得到 glyce-word embedding. 组合的方法可以很灵活, 比如拼接, 或者再使用神经网络, 以下是示意图. 鉴于中文的词语可以包含任意多的汉字, 文章在所有 glyce-char embeddings 之上使用了一个 max-pooling.
 
 ![glyce_char_word.png](../../img/201901/glyce_char_word.png)
 
 ##### 备注
 
-本文共进行了 13 项实验, 几乎全部证明了 glyce 的优越性能. 但是实验的描述真是一言难尽, 全是一个模子刻出来的: 交代任务, 交代测试集, 交代 SOTA 模型, 如有必要根据任务使用 glyce 替代 character embedding 或使用 glyce-char 或 glyce-word, 交代实验结果, 交代 glyce 的好. 除非想了解中文 NLP 有哪些可用的测试集以及对应的 SOTA 模型, 不建议把实验从头到尾看一遍.
+本文共进行了 13 项实验, 几乎全部证明了 glyce 的优越性能. 但是实验的描述真是一言难尽, 全是一个模子刻出来的: 1) 交代任务, 2) 交代测试集, 3) 交代 SOTA 模型, 4) 如有必要根据任务使用 glyce 替代 character embedding 或使用 glyce-char 或 glyce-word, 5) 交代实验结果, 6) 交代 glyce 的好. 除非想了解中文 NLP 有哪些可用的测试集以及对应的 SOTA 模型, 不建议把实验从头到尾看一遍.
