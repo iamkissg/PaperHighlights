@@ -25,3 +25,5 @@ GPT-2 狂揽 7/8 项 language modelding 任务的记录. 本文的模型则连�
 ![MT-DNN2 on GLUE](../../img/201902/MT-DNN2_on_GLUE.png)
 
 MT-DNN 的 shared layers 就是 BERT-large, 因此可以认为它的优势完全来自于多任务学习. 多任务学习带来的另一个优点是, Domain Adaptation(领域自适应能力), 只需要少量数据, MT-DNN 就能在新任务上取得较好的结果, 在数据极端少的情况下(新任务数据集0.1%的数据), 准确率较 BERT 高了近一倍(80+% vs. 50+%).
+
+除了 GLUE, MT-DNN 目前还是 SNLI 和 SciTail 的 SOTA 模型.
