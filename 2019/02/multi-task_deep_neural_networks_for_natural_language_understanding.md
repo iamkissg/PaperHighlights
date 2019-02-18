@@ -18,7 +18,7 @@ BERT 本身就是为迁移学习而生的, 但是它一次只能针对单一任�
 
 根据文章的说法, 多任务学习的另一个(我没想到的)优势是, 比起单任务, 它能提供更多的数据. 数据量是监督学习不容忽视的一个量.
 
-上文说到 Lexicon Encoder 的使用某种程度上也是为了 BERT. 事实上, 它就是 BERT 的一部分, 上图2中 Lexicon Encoder + Transformer Encoder = BERT, 文章用了"拿来主义", 直接使用的 Google 预训练好的 BERT. 后面 Task specific layer 的输入, 也完全按照 BERT 论文来 (以 [CLS] 对应的输出作为句子/句子对的表示). 于是本文就省了预训练的步骤, 直接在 GLUE 上进行 fine-tuning.
+上文说到 Lexicon Encoder 的使用某种程度上也是为了 BERT. 事实上, 它就是 BERT 的一部分, 上图2中 Lexicon Encoder + Transformer Encoder = BERT, 文章用了"拿来主义", 直接使用的 HuggingFace 预训练好的 BERT. 后面 Task specific layer 的输入, 也完全按照 BERT 论文来 (以 [CLS] 对应的输出作为句子/句子对的表示). 于是本文就省了预训练的步骤, 直接在 GLUE 上进行 fine-tuning.
 
 GPT-2 狂揽 7/8 项 language modelding 任务的记录. 本文的模型则连破 8/9 项 GLUE 任务的记录, 剩下 1 项还是因为数据集本身有问题. MT-DNN 与 BERT-large(在单一任务上分别 fine-tune) 的对比如下(省略表头).
 
