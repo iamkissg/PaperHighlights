@@ -2,6 +2,8 @@
 
 论文地址: [http://aclweb.org/anthology/D17-1030](http://aclweb.org/anthology/D17-1030)
 
+项目地址: [https://github.com/minimalparts/nonce2vec](https://github.com/minimalparts/nonce2vec)
+
 ##### 要点
 
 一般训练 word embeddings, 都是用一个大型语料 (比如维基百科), 训练一次, 得到一个模型 (称 word embeddings 为模型可能不太准确, 姑且这样叫吧).
