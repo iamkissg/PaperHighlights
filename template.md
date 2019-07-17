@@ -1,8 +1,10 @@
-# Title
+---
+description: clickable paper address as description
+---
 
-论文地址: [URL](https://github.com/iamkissg/PaperHighlights/tree/e748838bc232093f9685c22210ec5bff856cf116/URL/README.md)
+# Paper Title as Note Title
 
-## 要点
+## Highlights
 
-## 备注
+## Remarks
 
