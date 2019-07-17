@@ -1,8 +1,8 @@
-### Contextual Word Representations: A Contextual Introduction
+# Contextual Word Representations: A Contextual Introduction
 
 论文地址: [https://arxiv.org/abs/1902.06006](https://arxiv.org/abs/1902.06006)
 
-##### 要点
+## 要点
 
 如标题所示, 本文要讲的无非 contextual word representations, 但是它并不从 context 讲起, 而是换了个说法, 很清奇.
 
@@ -20,3 +20,4 @@
 * Natural language processing is not a single problem.
 
 说白了, 就是任重而道远.
+

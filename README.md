@@ -1,21 +1,24 @@
-# Papernotes
+---
+description: 'I read papers, and here are my highlights.'
+---
 
+# PaperHighlights
 
-#### 2018-11
+## 2018-11
 
 * [Learning Word Meta-Embeddings](https://github.com/iamkissg/papernotes/blob/master/2018/11/learning_word_meta-embeddings.md)
 * [Frustratingly Easy Meta-Embedding – Computing Meta-Embeddings by Averaging Source Word Embeddings](https://github.com/iamkissg/papernotes/blob/master/2018/11/wme_av.md)
 
-#### 2018-06
+## 2018-06
 
 * [Teaching Machines to Read and Comprehend](https://github.com/iamkissg/papernotes/blob/master/2018/6/teaching_machines_to_read_and_comprehend.md)
 * [Attention-over-Attention Neural Networks for Reading Comprehension](https://github.com/iamkissg/papernotes/blob/master/2018/6/AoA_Reader.md)
 * [Consensus Attention-based Neural Networks for Chinese Reading Comprehension](https://github.com/iamkissg/papernotes/blob/master/2018/6/CASReader.md)
 * [Convolutional Neural Networks for Sentence Classification](https://github.com/iamkissg/papernotes/blob/master/2018/6/CNN_for_sentence_classification.md)
 * [Deep contextualized word representations](https://github.com/iamkissg/papernotes/blob/master/2018/6/ELMo.md)
-* [A Sensitivity Analysis of (and Practitioners’ Guide to) Convolutional Neural Networks for Sentence Classification](https://github.com/iamkissg/papernotes/blob/master/2018/6/a_sensitivity_analysis_of_cnn4sc.md)
+* [A Sensitivity Analysis of \(and Practitioners’ Guide to\) Convolutional Neural Networks for Sentence Classification](https://github.com/iamkissg/papernotes/blob/master/2018/6/a_sensitivity_analysis_of_cnn4sc.md)
 
-#### 2018-05
+## 2018-05
 
 * [Attention Is All You Need](https://github.com/iamkissg/papernotes/blob/master/2018/5/attn-is-all-you-need.md)
 * [Neural Machine Translation by Jointly Learning to Align and Translate](https://github.com/iamkissg/papernotes/blob/master/2018/5/nmt-by-jointly-learning-to-align-and-translate.md)
@@ -37,11 +40,11 @@
 * [A Structured Self-attentive Sentence Embedding](https://github.com/iamkissg/papernotes/blob/master/2018/5/a_structured_self_attentive_sentence_embedding.md)
 * [DiSAN: Directional Self-Attention Network for RNN/CNN-Free Language Understanding](https://github.com/iamkissg/papernotes/blob/master/2018/5/DiSAN.md)
 
+## 历史遗留笔记 \(周记\)
 
-#### 历史遗留笔记 (周记)
+* [2018](https://github.com/iamkissg/PaperHighlights/tree/e748838bc232093f9685c22210ec5bff856cf116/2018/README.md)
+  * [1](https://github.com/iamkissg/PaperHighlights/tree/e748838bc232093f9685c22210ec5bff856cf116/2018/1/README.md)
+* [2017](https://github.com/iamkissg/PaperHighlights/tree/e748838bc232093f9685c22210ec5bff856cf116/2017/README.md)
+  * [12](https://github.com/iamkissg/PaperHighlights/tree/e748838bc232093f9685c22210ec5bff856cf116/2017/12/README.md)
+  * [11](https://github.com/iamkissg/PaperHighlights/tree/e748838bc232093f9685c22210ec5bff856cf116/2017/11/README.md)
 
-* [2018](2018)
-    * [1](2018/1)
-* [2017](2017)
-    * [12](2017/12)
-    * [11](2017/11)

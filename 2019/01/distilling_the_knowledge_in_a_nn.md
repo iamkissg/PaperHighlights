@@ -1,28 +1,28 @@
-### Distilling the Knowledge in a Neural Network
+# Distilling the Knowledge in a Neural Network
 
 论文地址: [https://arxiv.org/abs/1503.02531](https://arxiv.org/abs/1503.02531)
 
-##### 要点
+## 要点
 
 本文介绍了一种很实用的迁移学习方法: 将集成的/大的模型的知识压缩进一个单个/小的模型.
 
 简单地说, 是训练小模型达到集成模型的泛化能力, 换言之, 将集成模型的泛化能力迁移到小模型.
 
-稍微具体以西点, 是用集成模型(集成之后)输出的概率, 文中称为"soft target", 作为小模型的 target 进行学习. 这就好像"对着参考答案写作业, 抄多了, 以后不管是对是错, 写出来就是参考答案的味道了". 文中的说法是, **当 soft target 的熵很高时, 它提供比 hard target (即 label) 更多的信息, 而且样本之间的方差会更小, 于是只需要少得多的数据就能完成小模型的训练, 学习率也可以设得更高**. 还是以写作业为例, "在不会写的情况下, 标准答案就给出了数字, 过程略, 这不过给了往答案凑的方向; 如果是参考十位同学的作业, 那么他们答案的出入能带来更多的解题思路". 
+稍微具体以西点, 是用集成模型\(集成之后\)输出的概率, 文中称为"soft target", 作为小模型的 target 进行学习. 这就好像"对着参考答案写作业, 抄多了, 以后不管是对是错, 写出来就是参考答案的味道了". 文中的说法是, **当 soft target 的熵很高时, 它提供比 hard target \(即 label\) 更多的信息, 而且样本之间的方差会更小, 于是只需要少得多的数据就能完成小模型的训练, 学习率也可以设得更高**. 还是以写作业为例, "在不会写的情况下, 标准答案就给出了数字, 过程略, 这不过给了往答案凑的方向; 如果是参考十位同学的作业, 那么他们答案的出入能带来更多的解题思路".
 
-再具体一些就是, 为小模型生成 soft targets 时, 对 softmax 升温, 直到得到合适的 soft targets. 然后用 soft targets 和同样的高温来训练小模型. 就"升温"而言, 本文用的"蒸馏(distillation)"一词可以说很形象了. (撇开这个, 我还是觉得用得精妙, 有一种化学实验提纯的味道, 只是这次提纯的是知识)
+再具体一些就是, 为小模型生成 soft targets 时, 对 softmax 升温, 直到得到合适的 soft targets. 然后用 soft targets 和同样的高温来训练小模型. 就"升温"而言, 本文用的"蒸馏\(distillation\)"一词可以说很形象了. \(撇开这个, 我还是觉得用得精妙, 有一种化学实验提纯的味道, 只是这次提纯的是知识\)
 
 那么什么叫"对 softmax 升温"呢? 大多数同学熟悉的 softmax 函数应该是这样的:
 
-![softmax_normal](../../img/201901/softmax_normal.png)
+![softmax\_normal](../../.gitbook/assets/softmax_normal.png)
 
 不过, 有时候它也会被写成如下形式:
 
-![softmax_temperature](../../img/201901/softmax_temperature.png)
+![softmax\_temperature](../../.gitbook/assets/softmax_temperature.png)
 
-式中的 T 就是 softmax 的温度, 前边的 softmax 是 T=1 的一个特例 (请忽略字符的不统一). 使用更大的 T 值, 即升温, 会得到更软的概率分布. 体会一下:
+式中的 T 就是 softmax 的温度, 前边的 softmax 是 T=1 的一个特例 \(请忽略字符的不统一\). 使用更大的 T 值, 即升温, 会得到更软的概率分布. 体会一下:
 
-```ipython
+```text
 In [5]: np.exp(1/1)/(np.exp(1/1)+np.exp(10/1))
 Out[5]: 0.0001233945759862317
 
@@ -36,9 +36,9 @@ In [9]: np.exp(10/10)/(np.exp(1/10)+np.exp(10/10))
 Out[9]: 0.7109495026250039
 ```
 
-根据熵的计算公式: ![entropy](../../img/201901/entropy.png), 更软的 target, 带来了更高的熵, 根据熵的定义, 信息量更大了.
+根据熵的计算公式: ![entropy](../../.gitbook/assets/entropy.png), 更软的 target, 带来了更高的熵, 根据熵的定义, 信息量更大了.
 
-```ipython
+```text
 In [10]: -(0.0001233945759862317*np.log2(0.0001233945759862317)+0.9998766054240137*np.log2(0.9998766054240137))
 Out[10]: 0.0017802184127800975
 
@@ -54,7 +54,7 @@ Out[11]: 0.8674915504724934
 
 文章还证明 soft targets 具有正则化的作用, 能缓解模型在小数据集上的过拟合.
 
+## 备注
 
-##### 备注
+这篇文章的思想和 meta-embedding \(将多个 word embeddings 的知识压缩进一个 word embedding\) 很接近.
 
-这篇文章的思想和 meta-embedding (将多个 word embeddings 的知识压缩进一个 word embedding) 很接近.
